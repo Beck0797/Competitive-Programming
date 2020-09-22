@@ -1,0 +1,56 @@
+//https://leetcode.com/problems/available-captures-for-rook/
+class Solution {
+public:
+    int numRookCaptures(vector<vector<char>>& board) {
+        int rR, rC, ans = 0;
+        for(int r = 0; r < 8; ++r){
+            for(int c = 0; c < 8; ++c){
+                if(board[r][c] == 'R'){
+                    rR = r, rC = c;
+                }
+            }
+        }    
+        int r = rC+1, l = rC-1, u = rR-1, d = rR+1;
+		// left
+		for(; l >= 0; --l){
+			if(board[rR][l] == 'p'){
+                ans++;
+               break;
+            }else if(board[rR][l] == 'B'){
+                break;
+            }
+		}
+
+		//right
+		for(; r<= 7; r++){
+			if(board[rR][r] == 'p'){
+                ans++;
+                break;
+            }else if(board[rR][r] == 'B'){
+                break;
+            }
+		}
+
+		//up
+		for(; u >=0; --u){
+			if(board[u][rC] == 'p'){
+                ans++;
+                break;
+            }else if(board[u][rC] == 'B'){
+                break;
+            }
+		}
+		//down
+		for(; d <=7; ++d){
+			if(board[d][rC] == 'p'){
+                ans++;
+                break;
+            }else if(board[d][rC] == 'B'){
+                break;
+            }
+		}
+
+        return ans;
+                     
+    }
+};
