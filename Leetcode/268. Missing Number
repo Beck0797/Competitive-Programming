@@ -1,0 +1,12 @@
+//https://leetcode.com/problems/missing-number/
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int n = nums.size();
+        int s = n * (n+1)/2;                 // sum of first n numbers
+        int s2 = accumulate(nums.begin(), nums.end(), 0); // sum of the vector
+        return s - s2;
+        
+    }
+};
