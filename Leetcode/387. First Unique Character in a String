@@ -1,0 +1,39 @@
+//https://leetcode.com/problems/first-unique-character-in-a-string/
+
+class Solution {
+public:
+    int firstUniqChar(string s) {
+//         char taken;
+//         bool repeating = false;
+//         int n = s.length();
+        
+//         if(n ==1) return 0;
+        
+//         for(int i = 0; i < n; ++i){
+//             taken = s[i];
+//             for(int j = 0; j < n; ++j){
+//                 if(s[j] == taken && j != i){
+//                     // cout << s[j ] << " == "<< taken << endl;
+//                     repeating = true;
+//                     break;
+//                 }
+//             }
+//             if(!repeating) return i;
+//             repeating = false;
+//         }
+//         return -1;
+//     }                              //this is my solution that I first came up with. It is O(n)2
+        
+
+    unordered_map<char,int> mp;
+    for(int i=0;i<s.length();i++)
+        mp[s[i]]++;
+    
+    for(int i=0;i<s.length();i++)
+    {
+        if(mp[s[i]]==1)
+            return i;
+    }
+    return -1;
+}
+};
