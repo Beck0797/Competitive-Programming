@@ -1,0 +1,36 @@
+https://official.contest.yandex.com/uz2020/contest/23208/problems/B/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+cout << "? 9 3"<< endl;
+int n = 0;
+cin >> n;
+switch (n){
+    case 12:
+        cout << "! +" << endl;
+        break;
+    case 6:
+        cout << "! -" << endl;
+		break;
+    case 27:
+        cout << "! *" << endl;
+		break;
+    case 3:
+        cout << "! /" << endl;
+        break;
+    case 1:
+        cout << "! & " << endl;
+        break;
+    case 11:
+        cout << "! |" << endl;;
+        break;
+    case 10:
+        cout << "! ^" << endl;
+        break;
+
+}
+
+    return 0;
+}
