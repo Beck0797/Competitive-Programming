@@ -1,0 +1,27 @@
+https://leetcode.com/problems/robot-return-to-origin/
+
+class Solution {
+public:
+    bool judgeCircle(string s) {
+        
+        int x = 0, y = 0;
+        
+        for(char c : s){
+            switch(c){
+
+                case 'U': y++;
+                    break;
+                case 'D': y--;
+                    break;
+                case 'R': x++;
+                    break;
+                default:
+                    x--;
+                    break;
+            }
+        }
+        return (x == 0 && y == 0);
+        
+    }
+};
+
