@@ -1,0 +1,31 @@
+//https://leetcode.com/problems/maximum-units-on-a-truck/
+
+class Solution {
+public:
+    int maximumUnits(vector<vector<int>>& boxTypes, int truckSize) {
+        int m = boxTypes.size();
+        int ans = 0;
+        int loaded = 0;
+        map<int, int> mp;
+        
+        for(int i = 0; i < m; ++i){
+            mp[boxTypes[i][1]] += boxTypes[i][0];   
+        }
+      
+        for(auto it = mp.rbegin(); it != mp.rend(); ++it){
+         
+            if(loaded + it->second  <= truckSize){
+                ans += it->first * it->second;
+                loaded += it->second;
+            }else{
+                ans+= it->first * (truckSize - loaded);
+                loaded += truckSize - loaded;
+                
+            }
+            
+            if(loaded == truckSize) break;
+        }
+        
+        return ans;
+    }
+};
