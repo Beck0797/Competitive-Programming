@@ -1,0 +1,84 @@
+//https://leetcode.com/problems/masking-personal-information/
+
+class Solution {
+public:
+    string maskEmail(string s){
+            string ans = "";
+            string firstName = "";
+            bool done = false;
+            for(char c : s){
+                c = tolower(c);
+                if(c == '@') done = true; 
+
+                if(!done){
+                    firstName += c;
+                }
+                if(done){
+                    ans += c;
+                }
+
+            }
+
+            char last = firstName[firstName.length() - 1];
+            firstName = firstName[0];
+            firstName += "*****";
+            firstName += last;
+
+
+            ans = firstName + ans;
+            return ans;
+        }
+    
+    string maskNum(string s){
+        string ans = "";
+        int digit = 0;
+        string last4 = "";
+        
+        for(int i = s.length()-1; i>=0; --i){
+            if(isdigit(s[i])){
+                digit++;
+                
+                if(digit < 5){
+                last4 += s[i];   
+                }
+            }
+         
+        }
+        
+        reverse(last4.begin(),last4.end());
+        
+        switch(digit){
+                case 10:
+                    ans = "***-***-";            
+                    break;
+                case 11:
+                    ans = "+*-***-***-";                    
+                    break;
+                case 12:
+                    ans =  "+**-***-***-";                
+                    break;
+                case 13:
+                    ans = "+***-***-***-";            
+                    break;
+                
+        }
+            ans += last4;
+        
+        
+        return ans;
+    }
+    
+    string maskPII(string s) {
+        string ans = "";
+        
+        char first = s[0];
+        if(isalpha(first)){
+          ans =  maskEmail(s);
+        }else{
+            ans = maskNum(s);
+        }
+        
+        return ans;
+
+    }
+};
