@@ -1,0 +1,32 @@
+//https://leetcode.com/problems/check-if-word-is-valid-after-substitutions/
+
+class Solution {
+public:
+    bool isValid(string s) {
+        int n = s.size();
+        vector<char> v;
+        
+        for(int i = 0; i < n; ++i){
+            string lastTwo;
+            int size = v.size();
+            if(size >= 2){
+                
+                lastTwo.push_back(v[size - 2]);
+                lastTwo.push_back(v[size - 1]); 
+
+            }
+            
+            if(v.empty()){
+                v.push_back(s[i]);
+            }else if(lastTwo == "ab" && s[i] == 'c'){
+                v.pop_back();
+                v.pop_back();
+            }else{
+                v.push_back(s[i]);
+            }
+        }
+            
+        return v.empty();
+    }
+
+};
