@@ -1,0 +1,33 @@
+//https://leetcode.com/problems/get-maximum-in-generated-array/
+
+class Solution {
+public:
+    int getMaximumGenerated(int n) {
+        if( n == 0) return n;
+        
+        vector<int> vc;
+        vc.push_back(0);
+        vc.push_back(1);
+        int i = 1;
+        int ans = 1;
+        
+        while(vc.size() < n + 1) {
+            if (2 * i <= n && 2 * i >= 2) {
+                vc.push_back(vc[i]);
+                ans = max(vc[i], ans);
+
+            }
+            
+            if (2 * i + 1 <= n && 2 * i + 1 >= 2) {
+                int num = vc[i] + vc[i+1];
+                vc.push_back(num);
+                ans = max(num, ans);
+
+            }
+
+            ++i;
+        }
+        
+        return ans;
+    }
+};
