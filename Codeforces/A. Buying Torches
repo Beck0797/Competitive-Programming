@@ -1,0 +1,31 @@
+//https://codeforces.com/problemset/problem/1418/A
+
+#include <bits/stdc++.h>
+typedef long long ll;
+using namespace std;
+
+ll devide(ll a, ll b) {
+  return (a + b - 1) / b;
+}
+
+ll solve() {
+  ll x, y, k;
+  ll ans = 0;
+  cin >> x >> y >> k;
+
+  ll ST = y * k + k;
+  ans += devide(ST - 1, x - 1) + k;
+  
+  return ans;
+}
+
+int main() {
+ ios::sync_with_stdio(false);
+ cin.tie(0);
+ int t;
+ cin >> t;
+ while(t--) {
+  cout << solve() << endl;
+ }
+ return 0;
+}
