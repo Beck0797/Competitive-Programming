@@ -1,0 +1,37 @@
+//https://codeforces.com/contest/1353/problem/C
+
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+void solve() {
+
+	ll n;
+	cin >> n;
+	if (n == 1) {
+		cout << "0" << endl;
+		return;
+	}
+	ll maxmove;
+	ll maxP;
+	ll ans = 0;
+	while(n != 1){
+		maxmove = n / 2;
+		maxP = (n + n) + ((n - 2) + (n - 2));
+		ans += maxmove * maxP;
+		n-=2;
+	}
+	cout << ans << endl;
+}
+
+int main() {
+	int t;
+	cin >> t;
+	while (t--) {
+		solve();
+	}
+
+	return 0;
+}
+
+
