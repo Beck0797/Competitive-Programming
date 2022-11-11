@@ -1,0 +1,25 @@
+// https://leetcode.com/problems/first-bad-version/?envType=study-plan&id=algorithm-i
+
+// The API isBadVersion is defined for you.
+// bool isBadVersion(int version);
+
+class Solution {
+public:
+    long long firstBadVersion(int n) {
+        long long l = 0;
+        long long r = n;
+        long long badVersion = 1;
+        
+        while(l <= r) {
+            long long m = (l + r) / 2;
+            
+            if(isBadVersion(m)) {
+                r = m - 1;
+                badVersion = m;
+            } else {
+                l = m + 1;
+            }
+        }
+        return badVersion;
+    }
+};
