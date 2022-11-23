@@ -1,0 +1,56 @@
+//https://codeforces.com/contest/1760/problem/C
+
+#include <bits/stdc++.h>
+
+using namespace std;
+typedef long long ll;
+
+void solve(){
+	int n;
+	cin >> n;
+	vector <int> v(n);
+	int maxs = -1;
+	int maxsInd = -1;
+	int secondMax = -1;
+	for(int i = 0; i < n; ++i) {
+		cin >> v[i];
+		if(v[i] > maxs) {
+			maxs = v[i];
+			maxsInd = i;
+		}
+	}
+		
+	for(int i = 0; i < n; ++i) {
+		if(v[i] > secondMax) {
+			if(i != maxsInd) {
+				secondMax = v[i];
+			}
+		} 
+	}
+	
+	for(int i = 0; i < n; ++i) {
+		if(i == maxsInd) {
+			cout << maxs - secondMax << " ";
+		} else {
+			cout << v[i] - maxs << " ";
+
+		}		
+		
+	}
+	cout << endl;
+	
+
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    int tt;    
+    cin >> tt;
+    while(tt--){
+        solve();
+    }
+
+    return 0;
+}
