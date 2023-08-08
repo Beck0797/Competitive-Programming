@@ -1,0 +1,42 @@
+//https://codeforces.com/contest/1857/problem/C
+
+#include <bits/stdc++.h>
+
+using ll = long long;
+using namespace std;
+
+void solve() {
+    int n;
+    cin >> n;
+
+    int m = n * (n - 1) / 2;
+    vector<int> v(m);
+    for(int i = 0; i < m; ++i) {
+        cin >> v[i];
+    }
+
+    sort(v.begin(), v.end());
+
+    int cnt = 1;
+    for(int j = 0; j < m; ++j) {
+        cout << v[j] << " ";
+        j += n - cnt - 1;
+        cnt++;
+    }
+     
+     cout << v[v.size() - 1] << endl;
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    
+    int t;
+    cin >> t;
+    
+    while (t--) {
+        solve();
+    }
+    
+    return 0;
+}
