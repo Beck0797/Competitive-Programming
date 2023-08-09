@@ -1,0 +1,56 @@
+//https://codeforces.com/contest/680/problem/B
+#include <bits/stdc++.h>
+
+using ll = long long;
+using namespace std;
+
+void solve() {
+    int n, me;
+    cin >> n >> me;
+
+    vector<int> v(n);
+    for(int i = 0; i < n; ++i) {
+        cin >> v[i];
+    }
+
+    int ans = 0;
+    int m = max(me, n - me);
+    me -= 1;
+
+    if(v[me] == 1) ans++;
+
+    for(int i = 1; i <=m; ++i) {
+        
+        if(me - i >= 0 && me + i < n) {
+            if(v[me-i] == 1 && v[me + i] == 1) {
+                ans += 2;
+            }
+        } else {
+            if(me - i >= 0) {
+                if(v[me-i] == 1) {
+                    ans++;
+                    continue;
+                }
+            }
+
+            if(me + i < n) {
+                if(v[me + i] == 1) {
+                    ans++;
+                    continue;
+                }
+            }
+        }
+    }
+
+    cout << ans << endl;
+
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    solve();
+    
+    return 0;
+}
