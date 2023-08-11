@@ -1,0 +1,55 @@
+https://codeforces.com/contest/16/problem/B
+#include <bits/stdc++.h>
+
+using ll = long long;
+using namespace std;
+
+bool compare(
+    pair<int, int> pr1, 
+    pair<int, int> pr2 ) {
+        return pr1.second < pr2.second;
+    }
+
+void solve() {
+    int n, m;
+    cin >> n >> m;
+
+    vector<pair<int, int>> vc;
+    for(int i = 0; i < m; ++i) {
+        int a, b;
+        cin >> a >> b;
+
+        pair<int, int> pr(a, b);
+
+
+        vc.push_back(pr);
+    }
+    sort(vc.rbegin(), vc.rend(), compare);
+
+    // for(auto i : vc) {
+    //     cout << i.first << ": " << i.second << endl;
+    // }
+
+    int ans = 0;
+    for(int i = 0; i < vc.size(); ++i) {
+        pair<int, int> pr = vc[i];
+        if(n > pr.first) {
+            n -= pr.first;
+            ans += (pr.first * pr.second);
+        } else {
+            ans += (pr.second * n);
+            break;
+        }
+    }
+
+    cout << ans << endl;
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    solve();
+    
+    return 0;
+}
